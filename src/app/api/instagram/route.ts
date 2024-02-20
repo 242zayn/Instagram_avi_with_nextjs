@@ -1,6 +1,5 @@
-import connection_Mongodb, { MONGODB_URL } from "@/libs/mongodb";
+import  { MONGODB_URL } from "@/libs/mongodb";
 import All_Data from "@/models/model";
-import dbConnect from "@/utils/dbConnections";
 import mongoose, { model } from "mongoose";
 import { NextResponse } from "next/server";
 
