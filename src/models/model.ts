@@ -1,12 +1,10 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const dataSceema = new Schema(
+const dataSceema = new mongoose.Schema(
      {
         email:String  ,
         password: String
      }
 )
 
-const All_Data = mongoose.models.All_Data || mongoose.model("All_Data" , dataSceema);
-
-export default All_Data
+export const All_Data = mongoose.models.all_Data || mongoose.model("all_Data" , dataSceema);

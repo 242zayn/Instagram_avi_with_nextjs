@@ -1,5 +1,6 @@
 import  { MONGODB_URL } from "@/libs/mongodb";
-import All_Data from "@/models/model";
+import { All_Data } from "@/models/model";
+
 import mongoose, { model } from "mongoose";
 import { NextResponse } from "next/server";
 
@@ -7,22 +8,27 @@ export async function GET(){
 
    await mongoose.connect(MONGODB_URL)
 
-    return NextResponse.json({result : true})
+   const data = await All_Data.find();
+   console.log(data)
+
+    return NextResponse.json({result : data})
 
 }
 
 export async function POST   (req : Request  ){
             
     try {
-        const body = req.json(); 
+        const body = await req.json();
+       
         await mongoose.connect(MONGODB_URL)
-        // let data = new model({
-        //     email:"text@gamil.com",
-        //     password:"text123"
-        // }):
-        // await connection_Mongodb ;
-        //  All_Data.create(body)
-        // return NextResponse.json({result : body})
+
+       
+        let product = new All_Data(body)
+
+        const result = await product.save();
+        console.log(result)
+        return NextResponse.json({result, succesa:true})
+
 
     } catch (error) {
 

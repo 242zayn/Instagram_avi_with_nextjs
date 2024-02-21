@@ -11,9 +11,6 @@ import mongoose from "mongoose"
 
         console.log(error)
         
-    }
-     
+    }   
 }
-
-
 export default connection_Mongodb ;
